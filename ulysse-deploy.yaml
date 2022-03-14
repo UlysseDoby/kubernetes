@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    flux.weave.works/automated: "false"
+  labels:
+    app: guestbook-ulysse
+  name: guestbook-ulysse
+  namespace: ulysse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guestbook-ulysse
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: guestbook-ulysse
+    spec:
+      containers:
+      - image: dobyulysse/guestbook:1.0
+        name: guestbook
